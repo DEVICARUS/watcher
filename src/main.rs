@@ -192,15 +192,17 @@ impl EventHandler for Handler {
             };
 
             for subscriber in subscribers_guild {
-                let user = _new.user_id.to_user_cached(&_ctx).unwrap().read().clone();
-                let message = format!("`{}` joined a voice channel in `{}`", user.name, guild.name);
-
-                UserId(subscriber)
-                    .to_user_cached(&_ctx)
-                    .unwrap()
-                    .read()
-                    .direct_message(&_ctx, |m| m.content(message))
-                    .expect("Failed to send notification");
+                let joiner = _new.user_id.to_user_cached(&_ctx).unwrap().read().clone();
+                let message = format!("`{}` joined a voice channel in `{}`", joiner.name, guild.name);
+                
+                if joiner.id != UserId(subscriber) {
+                    UserId(subscriber)
+                        .to_user_cached(&_ctx)
+                        .unwrap()
+                        .read()
+                        .direct_message(&_ctx, |m| m.content(message))
+                        .expect("Failed to send notification");
+                }
             }
         }
     }
