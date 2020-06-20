@@ -13,7 +13,7 @@ use serde_yaml;
 use serenity::{
     model::{
         channel::Message,
-        gateway::Ready,
+        gateway::{Activity, Ready},
         id::{GuildId, UserId},
         voice::VoiceState,
     },
@@ -161,8 +161,9 @@ impl EventHandler for Handler {
         }
     }
 
-    fn ready(&self, _: Context, ready: Ready) {
+    fn ready(&self, ctx: Context, ready: Ready) {
         println!("{} is connected!", ready.user.name);
+        ctx.set_activity(Activity::playing(&format!("{}help", &*PREFIX)))
     }
 
     fn voice_state_update(
