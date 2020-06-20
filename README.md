@@ -3,8 +3,7 @@
 
 <br><br>
 <p align="center"><img src="screenshots/subscribing.png"/></p>
-<h3 align="center">⬇️<p>
-<br>
+<p align="center">⬇️<p>
 <p align="center"><img src="screenshots/notification.png"/></p>
 <br><br>
 
