@@ -21,7 +21,8 @@ use serenity::{
 };
 
 lazy_static! {
-    static ref PREFIX: String = env::var("PREFIX").expect("Expected PREFIX to be in the environment");
+    static ref PREFIX: String =
+        env::var("PREFIX").expect("Expected PREFIX to be in the environment");
 }
 
 struct Handler;
@@ -208,10 +209,13 @@ impl EventHandler for Handler {
 fn main() {
     dotenv().ok();
 
-    let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
+    let token = env::var("DISCORD_TOKEN").expect("Expected DISCORD_TOKEN to be in the environment");
 
     if !Path::new("subscribers.yaml").exists() {
-        File::create("subscribers.yaml").expect("Failed to create a subscribers file").write_all(b"---\n0:\n  - 0").expect("Failed to write into sunbscribers file");
+        File::create("subscribers.yaml")
+            .expect("Failed to create a subscribers file")
+            .write_all(b"---\n0:\n  - 0")
+            .expect("Failed to write into sunbscribers file");
     }
 
     let mut client = Client::new(&token, Handler).expect("Err creating client");
