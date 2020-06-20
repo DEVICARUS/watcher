@@ -133,6 +133,29 @@ impl EventHandler for Handler {
                         }
                     }
                 }
+                "help" => {
+                    if let Err(why) = _msg.channel_id.send_message(&_ctx.http, |m| {                    
+                        m.embed(|e| {
+
+                            e.field("About", format!("
+                                Hey! My name is {name} and I'm here to notify you when someone joins a voice channel. You may check out my source code on GitHub.
+                                https://github.com/DEVICARUS/watcher
+                            ", name=_ctx.cache.read().user.name), false);
+
+                            e.field("Commands", format!("
+                                `{prefix}subscribe` - Subscribe for notifications
+                                `{prefix}unsubscribe` - Unsubscribe from notifications
+                                `{prefix}help` - This dialog
+                            ", prefix=&*PREFIX), false);
+                    
+                            e
+                        });
+                    
+                        m
+                    }) {
+                        println!("Error sending message: {:?}", why);
+                    }
+                }
                 _ => {}
             }
         }

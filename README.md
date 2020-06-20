@@ -11,6 +11,7 @@
 ## Usage
 Set up environment variables `DISCORD_TOKEN` and `PREFIX` (`.env` supported) and do `cargo run`.
 
+Bring up help by using the `help` command.\
 Subscribe by `subscribe` and unsubscribe by `unsubscribe`.
 
 Subscriptions are server-wide.
