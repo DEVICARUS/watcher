@@ -9,9 +9,9 @@
 <br><br>
 
 ## Usage
-Set up an environment variable `DISCORD_TOKEN` (`.env` supported) and do `cargo run`.
+Set up environment variables `DISCORD_TOKEN` and `PREFIX` (`.env` supported) and do `cargo run`.
 
-Subscribe by `!subscribe` and unsubscribe by `!unsubscribe`.
+Subscribe by `subscribe` and unsubscribe by `unsubscribe`.
 
 Subscriptions are server-wide.
 

@@ -1393,9 +1393,10 @@ checksum = "a91c2916119c17a8e316507afaaa2dd94b47646048014bbdf6bef098c1bb58ad"
 
 [[package]]
 name = "watcher"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "dotenv",
+ "lazy_static",
  "serde",
  "serde_yaml",
  "serenity",

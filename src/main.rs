@@ -6,6 +6,8 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
+use lazy_static::lazy_static;
+
 use serde_yaml;
 
 use serenity::{
@@ -18,6 +20,10 @@ use serenity::{
     prelude::*,
 };
 
+lazy_static! {
+    static ref PREFIX: String = env::var("PREFIX").expect("Expected PREFIX to be in the environment");
+}
+
 struct Handler;
 
 impl EventHandler for Handler {
@@ -26,8 +32,9 @@ impl EventHandler for Handler {
             let author_id: u64 = *_msg.author.id.as_u64();
             let guild_id: u64 = *_msg.guild_id.unwrap().as_u64();
 
-            match _msg.content.as_ref() {
-                "!subscribe" => {
+            let command: String = _msg.content.replace(&*PREFIX, "");
+            match &*command {
+                "subscribe" => {
                     let reader = File::open("subscribers.yaml").expect("File not found");
 
                     let mut subscribers: BTreeMap<u64, Vec<u64>> =
@@ -74,7 +81,7 @@ impl EventHandler for Handler {
                         }
                     }
                 }
-                "!unsubscribe" => {
+                "unsubscribe" => {
                     let reader = File::open("subscribers.yaml").expect("File not found");
 
                     let mut subscribers: BTreeMap<u64, Vec<u64>> =
