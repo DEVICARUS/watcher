@@ -9,7 +9,8 @@
 <br><br>
 
 ## Usage
-Set up environment variables `DISCORD_TOKEN` and `PREFIX` (`.env` supported) and do `cargo run`.
+Set up the environment variable `DISCORD_TOKEN` and (`.env` supported) and do `cargo run`.\
+You may also set the command prefix by setting up `PREFIX` in the environment. Defaults to `!`.
 
 Bring up help by using the `help` command.\
 Subscribe by `subscribe` and unsubscribe by `unsubscribe`.

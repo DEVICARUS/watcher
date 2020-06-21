@@ -21,8 +21,10 @@ use serenity::{
 };
 
 lazy_static! {
-    static ref PREFIX: String =
-        env::var("PREFIX").expect("Expected PREFIX to be in the environment");
+    static ref PREFIX: String = match env::var("PREFIX") {
+        Ok(x) => x,
+        Err(_) => "!".to_string()
+    };
 }
 
 struct Handler;
