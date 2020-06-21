@@ -1,5 +1,5 @@
 # Welcome to watcher 👀
-![version](https://img.shields.io/badge/version-0.2.1-blue?style=for-the-badge)
+![version](https://img.shields.io/badge/version-0.3.0-blue?style=for-the-badge)
 > A Discord bot that notifies subscribers when someone joins a voice channel
 
 <br><br>
