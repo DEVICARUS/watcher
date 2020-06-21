@@ -1,6 +1,6 @@
 [package]
 name = "watcher"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["DEVICARUS <devicarus@omg.lol>"]
 edition = "2018"
 
